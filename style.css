@@ -8,6 +8,11 @@ body {
     color: #333;
     animation: fadeIn 1s ease-in;
     min-height: 100vh;
+    overflow-x: hidden;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
 }
 
 @keyframes fadeIn {
@@ -41,6 +46,8 @@ h1 {
     gap: 30px;
     margin: 0 auto;
     padding: 32px 20px;
+    overflow-x: hidden;
+    box-sizing: border-box;
 }
 
 .container {
@@ -58,6 +65,8 @@ h1 {
     width: 50%;
     height: 385px;
     transition: all 0.24s ease;
+    box-sizing: border-box;
+    max-width: 100%;
 }
 
 .container:hover {
@@ -340,6 +349,8 @@ button:active::before {
     overflow: hidden;
     height: 400px;
     transition: all 0.24s ease;
+    box-sizing: border-box;
+    max-width: 100%;
 }
 
 #output:hover {
@@ -420,4 +431,142 @@ button:active::before {
 #num {
     font-size: 18px;
     font-weight: 600;
+}
+
+/* Responsive Design for Mobile and Tablet */
+@media (max-width: 1024px) {
+    .wrapper {
+        flex-direction: column;
+        gap: 20px;
+        padding: 20px 15px;
+    }
+    
+    .container,
+    #output {
+        width: 100%;
+        height: auto;
+        min-height: 350px;
+    }
+    
+    h1 {
+        font-size: 2.2em;
+        margin-bottom: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .top-row {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .text-input-section,
+    .settings-section {
+        width: 100%;
+        flex: 1;
+    }
+    
+    #textInput {
+        max-width: 100%;
+        height: 120px;
+        font-size: 16px;
+        padding: 14px 16px;
+    }
+    
+    .bottom-row {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+    
+    .bottom-row input {
+        max-width: 100%;
+        width: 100%;
+    }
+    
+    .bottom-row .actions {
+        width: 100%;
+        margin-left: 0;
+        justify-content: center;
+    }
+    
+    .bottom-row .actions button {
+        flex: 1;
+        min-width: 100px;
+    }
+    
+    h1 {
+        font-size: 1.8em;
+        padding: 15px 0;
+    }
+    
+    .container {
+        padding: 20px;
+    }
+    
+    #output {
+        padding: 15px;
+        height: auto;
+        min-height: 300px;
+    }
+    
+    .send-buttons {
+        gap: 8px;
+    }
+    
+    .send-buttons button {
+        font-size: 13px;
+        padding: 8px 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.5em;
+        padding: 12px 0;
+        margin-bottom: 15px;
+    }
+    
+    .wrapper {
+        padding: 15px 10px;
+    }
+    
+    .container {
+        padding: 15px;
+    }
+    
+    .text-input-section label,
+    .bottom-row label[for="num"] {
+        font-size: 1rem;
+    }
+    
+    #textInput {
+        height: 100px;
+        font-size: 15px;
+        padding: 12px 14px;
+    }
+    
+    #num {
+        font-size: 16px;
+        padding: 8px 10px;
+        width: 100%;
+    }
+    
+    .bottom-row .actions button {
+        font-size: 13px;
+        padding: 8px 12px;
+        min-width: 80px;
+    }
+    
+    button {
+        padding: 12px 20px;
+        font-size: 14px;
+    }
+    
+    .settings-heading {
+        font-size: 1rem;
+    }
+    
+    .separator-options label {
+        font-size: 14px;
+    }
 }
