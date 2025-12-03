@@ -51,8 +51,21 @@ function sendToViber() {
 
 function sendToMessenger() {
     const outputText = document.getElementById('outputContent').textContent;
-    const url = 'fb-messenger://share/?text=' + encodeURIComponent(window.location.href) + '&app_id=YOUR_APP_ID';
-    window.open(url, '_blank');
+    // Messenger doesn't support direct text sharing via URL like WhatsApp/Viber
+    // Using the web share API or falling back to copying text
+    if (navigator.share) {
+        navigator.share({
+            text: outputText
+        }).catch(err => {
+            // If share fails, copy to clipboard
+            navigator.clipboard.writeText(outputText);
+            alert('Text copied to clipboard! You can paste it in Messenger.');
+        });
+    } else {
+        // Copy to clipboard as fallback
+        navigator.clipboard.writeText(outputText);
+        alert('Text copied to clipboard! You can paste it in Messenger.');
+    }
 }
 
 function setPreset(txt) {
