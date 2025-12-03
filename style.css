@@ -1,11 +1,13 @@
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+    background-attachment: fixed;
     display: block;
     margin: 0;
-    padding: 0px;
+    padding: 0;
     color: #333;
     animation: fadeIn 1s ease-in;
+    min-height: 100vh;
 }
 
 @keyframes fadeIn {
@@ -14,80 +16,260 @@ body {
 }
 
 h1 {
-    font-size: 2.5em;
-    background: linear-gradient(45deg, #fdae02, #00ffee, #00d0ff, #00ff88, #feca57);
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    text-shadow: none;
-    margin: 0 0 20px 0;
+    font-size: 3em;
+    margin: 0 0 30px 0;
     text-align: center;
-    font-weight: bold;
+    font-weight: 900;
     width: 100%;
     animation: fadeIn 1s ease-in;
-    background-color: rgba(255, 255, 255, 0.9);
-    padding: 15px 0;
-    /* border-radius: 15px; */
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    background: linear-gradient(90deg, #764ba2 0%, #5b4dc7 100%);
+    color: #ffffff;
+    -webkit-text-fill-color: #ffffff;
+    padding: 20px 0;
+    border-radius: 0 0 20px 20px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.15);
     display: block;
+    letter-spacing: -0.5px;
 }
 
 .wrapper {
     display: flex;
-    justify-content: space-around;
-    align-items: flex-start;
+    justify-content: center;
+    align-items: stretch;
     width: 100%;
-    max-width: 1200px;
-    gap: 20px;
+    max-width: 1400px;
+    gap: 30px;
     margin: 0 auto;
-    padding: 38px 0px;
+    padding: 32px 20px;
 }
 
 .container {
-    background: rgba(255, 255, 255, 0.95);
-    padding: 10px;
-    border-radius: 16px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-    backdrop-filter: blur(15px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.98);
+    padding: 28px;
+    border-radius: 20px;
+    box-shadow: 0 18px 50px rgba(0,0,0,0.18);
+    backdrop-filter: blur(14px);
+    border: 1px solid rgba(255, 255, 255, 0.28);
     animation: slideIn 0.8s ease-out;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 40%;
+    justify-content: flex-start;
+    align-items: stretch;
+    width: 50%;
     height: 400px;
+    transition: all 0.24s ease;
+}
+
+.container:hover {
+    box-shadow: 0 25px 70px rgba(0,0,0,0.3);
+    transform: translateY(-2px);
+}
+
+/* Controls layout inside the left panel */
+.controls {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+}
+
+.top-row {
+    display: flex;
+    gap: 20px;
+    width: 100%;
+    align-items: flex-start;
+    flex: 1;
+}
+
+.text-input-section {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.settings-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+}
+
+.bottom-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+}
+
+.bottom-row label {
+    margin: 0;
+    white-space: nowrap;
+}
+
+.bottom-row input {
+    flex: 1;
+    max-width: 120px;
+}
+
+.bottom-row .actions {
+    display: flex;
+    gap: 8px;
+    margin-left: auto;
+}
+
+.bottom-row .actions button {
+    min-width: 80px;
+    padding: 8px 14px;
+    font-size: 14px;
+}
+
+.text-input-section input,
+.settings-section input {
+    width: 100%;
+}
+
+/* Larger text input for 'Text To Repeat' */
+#textInput {
+    max-width: 85%;
+    font-size: 18px;
+    padding: 16px 20px;
+    border-radius: 10px;
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.04);
+    height: 140px;
+    line-height: 1.4;
+    resize: vertical;
+    font-family: inherit;
+    border: 2px solid #e0e0e0;
+    transition: all 0.3s ease;
+}
+
+#textInput:focus {
+    border-color: #667eea;
+    outline: none;
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
+    transform: translateY(-1px);
+}
+
+/* Make the numeric input a reasonable width */
+#num {
+    width: 140px;
+    padding: 10px 12px;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.settings-heading {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #6b4fb5;
+    margin: 8px 0 10px 0;
+    text-align: left;
+}
+
+.separator-options {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    justify-content: flex-start;
+    margin: 10px 0 0 0;
+}
+
+.separator-options label {
+    margin: 6px 0;
+    font-size: 15px;
+}
+
+.text-input-section label {
+    margin: 0;
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: #333;
+}
+
+.settings-section label {
+    margin: 0;
+    font-weight: 600;
+}
+
+/* Slightly reduce default input margins inside panels for tighter layout */
+.left-panel input,
+.right-panel input {
+    margin: 8px 0 12px 0;
+}
+
+/* Presets removed from HTML; styles intentionally omitted */
+
+label {
+    display: flex;
+    align-items: center;
+    margin: 5px 8px;
+    font-weight: 500;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    user-select: none;
+}
+
+label:hover {
+    color: #667eea;
+    transform: scale(1.05);
+}
+
+input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    margin-right: 6px;
+    cursor: pointer;
+    accent-color: #764ba2;
 }
 
 input {
-    padding: 12px;
+    padding: 14px 18px;
     margin: 10px;
-    border: 2px solid #ddd;
-    border-radius: 8px;
+    border: 2px solid #e0e0e0;
+    border-radius: 12px;
     font-size: 16px;
-    width: 200px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    transition: border-color 0.3s ease;
+    width: 250px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    transition: all 0.3s ease;
+    font-family: inherit;
 }
 
 input:focus {
-    border-color: #ff9a9e;
+    border-color: #667eea;
     outline: none;
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
+    transform: translateY(-1px);
 }
 
 button {
-    padding: 12px 24px;
+    padding: 14px 28px;
     margin: 10px;
     color: white;
     border: none;
-    border-radius: 8px;
+    border-radius: 12px;
     cursor: pointer;
     font-size: 16px;
-    font-weight: bold;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    transition: all 0.3s ease;
+    font-weight: 600;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
     overflow: hidden;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+    min-height: 44px;
+    z-index: 1;
+    font-family: inherit;
+}
+
+.send-buttons button {
+    padding: 10px 20px;
+    margin: 0;
+    font-size: 14px;
 }
 
 .repeat {
@@ -102,9 +284,21 @@ button {
     background: linear-gradient(45deg, #f44336, #d32f2f);
 }
 
+.whatsapp {
+    background: linear-gradient(45deg, #25D366, #128C7E);
+}
+
+.viber {
+    background: linear-gradient(45deg, #7360f2, #5b4dc7);
+}
+
+.messenger {
+    background: linear-gradient(45deg, #00B2FF, #006AFF);
+}
+
 button:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.25);
 }
 
 button:active {
@@ -123,6 +317,7 @@ button::before {
     border-radius: 50%;
     transform: translate(-50%, -50%);
     transition: width 0.6s, height 0.6s;
+    z-index: 0;
 }
 
 button:active::before {
@@ -130,27 +325,99 @@ button:active::before {
     height: 300px;
 }
 
+/* placeholder removed */
+
 #output {
-    padding: 10px;
-    border: 2px solid #ddd;
+    padding: 20px;
+    border: 1px solid rgba(0,0,0,0.08);
     background-color: #fff;
     width: 50%;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    border-radius: 20px;
+    box-shadow: 0 18px 50px rgba(0,0,0,0.16);
     animation: slideIn 0.5s ease-out 0.5s both;
     display: flex;
     flex-direction: column;
     overflow: hidden;
     height: 400px;
+    transition: all 0.24s ease;
+}
+
+#output:hover {
+    box-shadow: 0 25px 70px rgba(0,0,0,0.3);
+    transform: translateY(-2px);
+}
+
+.output-heading {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #6b4fb5;
+    margin: 0 0 12px 0;
+    text-align: center;
+}
+
+.send-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.send-buttons button:hover {
+    transform: translateY(-3px) scale(1.05);
+}
+
+.send-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 12px;
 }
 
 #outputContent {
     flex: 1;
     overflow-y: auto;
-    padding: 10px;
+    overflow-x: hidden;
+    padding: 14px;
+    margin: 0;
+    font-family: inherit;
+    font-size: 15px;
+    line-height: 1.6;
+    color: #333;
+    border: 2px solid #e9e9e9;
+    border-radius: 10px;
+    background-color: #fbfbfb;
+    word-wrap: break-word;
+    word-break: break-word;
+    white-space: pre-wrap;
+    overflow-wrap: break-word;
+}
+
+#outputContent::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+}
+
+#outputContent {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
 }
 
 @keyframes slideIn {
     from { transform: translateY(20px); opacity: 0; }
     to { transform: translateY(0); opacity: 1; }
+}
+
+/* Repeat Count label styling */
+.bottom-row label[for="num"] {
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: #333;
+}
+
+/* Repeat Count input styling */
+#num {
+    font-size: 18px;
+    font-weight: 600;
 }

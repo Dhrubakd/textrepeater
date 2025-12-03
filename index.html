@@ -1,25 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Text Repeater</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <h1>Text Repeater</h1>
     <div class="wrapper">
         <div class="container">
-            <input type="number" id="num" placeholder="Enter number">
-            <input type="text" id="textInput" placeholder="Enter text to repeat">
-            <button class="repeat" onclick="repeatSorry()">Repeat</button>
-            <button class="clear" onclick="clearOutput()">Clear</button>
+            <div class="controls">
+                <div class="top-row">
+                    <div class="text-input-section">
+                        <label for="textInput">Text To Repeat</label>
+                        <textarea id="textInput" placeholder="Enter text to repeat"></textarea>
+                    </div>
+                    <div class="settings-section">
+                        <h3 class="settings-heading">Settings</h3>
+                        <div class="separator-options">
+                            <label><input type="checkbox" name="separator" value="."> Add Period</label>
+                            <label><input type="checkbox" name="separator" value=" "> Add Space</label>
+                            <label><input type="checkbox" name="separator" value="NEWLINE"> Add Newline</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="bottom-row">
+                    <label for="num">Repeat Count</label>
+                    <input type="number" id="num" placeholder="Enter number">
+                    <div class="actions">
+                        <button class="repeat" onclick="repeatSorry()">Repeat</button>
+                        <button class="clear" onclick="clearOutput()">Clear</button>
+                    </div>
+                </div>
+            </div>
         </div>
+
         <div id="output">
-            <button class="copy" onclick="copyOutput()">Copy Output</button>
-            <div id="outputContent"></div>
+            <h3 class="output-heading">Send Options</h3>
+            <div id="summary" style="text-align:center; margin-bottom:8px; color:#555; font-size:14px;">No output yet
+            </div>
+            <div class="send-buttons">
+                <button class="copy" onclick="copyOutput()">📋 Copy</button>
+                <button class="whatsapp" onclick="sendToWhatsApp()">📱 WhatsApp</button>
+                <button class="viber" onclick="sendToViber()">💬 Viber</button>
+                <button class="messenger" onclick="sendToMessenger()">💙 Messenger</button>
+            </div>
+            <pre id="outputContent"></pre>
         </div>
     </div>
     <script src="script.js"></script>
 </body>
+
 </html>
