@@ -112,6 +112,18 @@ h1 {
     width: 100%;
 }
 
+.num-input-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    flex: 1;
+}
+
+.num-input-wrapper > label {
+    margin: 0;
+    white-space: nowrap;
+}
+
 .bottom-row label {
     margin: 0;
     white-space: nowrap;
@@ -120,6 +132,10 @@ h1 {
 .bottom-row input {
     flex: 1;
     max-width: 120px;
+}
+
+.num-input-wrapper input {
+    max-width: 180px;
 }
 
 .bottom-row .actions {
@@ -163,10 +179,37 @@ h1 {
 
 /* Make the numeric input a reasonable width */
 #num {
-    width: 140px;
+    width: 180px;
     padding: 10px 12px;
     font-size: 18px;
     font-weight: 600;
+}
+
+/* Error message styling */
+.error-message {
+    color: #d32f2f;
+    font-size: 13px;
+    margin-top: 4px;
+    font-weight: 600;
+    display: none;
+    min-height: 0;
+}
+
+.error-message.show {
+    display: block;
+    animation: shake 0.3s ease-in-out;
+}
+
+input.error,
+textarea.error {
+    border-color: #d32f2f !important;
+    box-shadow: 0 0 0 3px rgba(211, 47, 47, 0.1) !important;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
 }
 
 .settings-heading {

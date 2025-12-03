@@ -17,6 +17,7 @@
                     <div class="text-input-section">
                         <label for="textInput">Text To Repeat</label>
                         <textarea id="textInput" placeholder="Enter text to repeat"></textarea>
+                        <span class="error-message" id="textError"></span>
                     </div>
                     <div class="settings-section">
                         <h3 class="settings-heading">Settings</h3>
@@ -28,8 +29,11 @@
                     </div>
                 </div>
                 <div class="bottom-row">
-                    <label for="num">Repeat Count</label>
-                    <input type="number" id="num" placeholder="Enter number">
+                    <div class="num-input-wrapper">
+                        <label for="num">Repeat Count</label>
+                        <input type="number" id="num" placeholder="Enter number">
+                        <span class="error-message" id="numError"></span>
+                    </div>
                     <div class="actions">
                         <button class="repeat" onclick="repeatSorry()">Repeat</button>
                         <button class="clear" onclick="clearOutput()">Clear</button>

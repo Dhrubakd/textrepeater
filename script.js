@@ -1,6 +1,28 @@
 function repeatSorry() {
-    let num = parseInt(document.getElementById('num').value) || 0;
-    let text = document.getElementById('textInput').value || '';
+    // Clear previous errors
+    clearErrors();
+    
+    let numInput = document.getElementById('num').value;
+    let text = document.getElementById('textInput').value;
+    let num = parseInt(numInput) || 0;
+    
+    let hasError = false;
+    
+    // Validation
+    if (!numInput || num <= 0) {
+        showError('num', 'Please enter a valid number (greater than 0)');
+        hasError = true;
+    }
+    
+    if (!text || text.trim() === '') {
+        showError('textInput', 'Please enter some text to repeat');
+        hasError = true;
+    }
+    
+    if (hasError) {
+        return;
+    }
+    
     let separators = Array.from(document.querySelectorAll('input[name="separator"]:checked')).map(cb => cb.value);
 
     // Convert NEWLINE token to actual newline character and join all selected separators
@@ -71,4 +93,34 @@ function sendToMessenger() {
 function setPreset(txt) {
     const el = document.getElementById('textInput');
     if (el) el.value = txt;
+}
+
+function showError(inputId, message) {
+    const input = document.getElementById(inputId);
+    const errorElement = document.getElementById(inputId === 'num' ? 'numError' : 'textError');
+    
+    if (input && errorElement) {
+        input.classList.add('error');
+        errorElement.textContent = message;
+        errorElement.classList.add('show');
+        input.focus();
+    }
+}
+
+function clearErrors() {
+    const numInput = document.getElementById('num');
+    const textInput = document.getElementById('textInput');
+    const numError = document.getElementById('numError');
+    const textError = document.getElementById('textError');
+    
+    if (numInput) numInput.classList.remove('error');
+    if (textInput) textInput.classList.remove('error');
+    if (numError) {
+        numError.classList.remove('show');
+        numError.textContent = '';
+    }
+    if (textError) {
+        textError.classList.remove('show');
+        textError.textContent = '';
+    }
 }
