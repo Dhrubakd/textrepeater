@@ -51,7 +51,7 @@ function sendToViber() {
 
 function sendToMessenger() {
     const outputText = document.getElementById('outputContent').textContent;
-    const url = 'fb-messenger://share/?link=' + encodeURIComponent(window.location.href) + '&app_id=YOUR_APP_ID';
+    const url = 'fb-messenger://share/?text=' + encodeURIComponent(window.location.href) + '&app_id=YOUR_APP_ID';
     window.open(url, '_blank');
 }
 
